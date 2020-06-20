@@ -6,6 +6,7 @@
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
@@ -13,8 +14,6 @@
     "express-handlebars": "^3.1.0",
     "express-urlrewrite": "^1.2.0",
     "morgan": "~1.9.1",
-    "nodemon": "^2.0.2",
-    "request": "^2.88.2",
-    "request-promise": "^4.2.5"
+    "nodemon": "^2.0.2"
   }
 }

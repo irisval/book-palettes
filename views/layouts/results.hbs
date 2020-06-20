@@ -1,0 +1,25 @@
+<div class="container">
+
+  <h1> Results for {{searchTerm}}</h1>
+  <br>
+  {{#each bookResults}}
+  {{#if (resultsNewRow @index) }}
+  <div class="columns is-centered">
+   {{/if}}
+
+   <div class="column">
+    <figure class="image is-3by4">
+      <img src="{{this.volumeInfo.imageLinks.thumbnail}}">
+    </figure>
+    <p>{{this.volumeInfo.title}}</p>
+    {{#each this.volumeInfo.authors }}
+    <span>{{this}}</span>
+    {{/each}}
+  </div>
+
+
+  {{#if (resultsEndRow @index bookResults.length) }}
+</div>
+{{/if}}
+{{/each}}
+</div>

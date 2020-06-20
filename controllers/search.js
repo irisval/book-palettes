@@ -1,34 +1,32 @@
-const rp = require('request-promise');
+const axios = require('axios');
 
 exports.getIndex = (req, res, next) => {
   res.render('index');
 };
 
 exports.getSearch = (req, res, next) => {
-  console.log("you are here!");
-  console.log("\n\n\n\n");
-  const returnedBooks = {
-      uri: 'https://www.googleapis.com/books/v1/volumes',
-      qs: {
-          q: req.query.title,
-          // key: process.env.API_KEY 
-      },
-      headers: {
-          'User-Agent': 'Request-Promise'
-      },
-      json: true
-  };
-  console.log("you are NOW here!");
-  console.log("\n\n\n\n");
+  let searchTerm = req.query.title;
+  axios({
+    method: "GET",
+    url: "https://www.googleapis.com/books/v1/volumes",
+    params: {
+      q: searchTerm,
+      key: process.env.KEY,
+      startIndex: 0,
+      maxResults: 5,
+    }
+  }).then((response) => {
+      const items = response.data.totalItems;
+      const bookResults = response.data.items;
 
-  rp(returnedBooks).then(function (data) {
-      console.log(data);
-      res.redirect('/');
-    })
-    .catch(function (err) {
+      res.render('results', {
+        searchTerm,
+        items,
+        bookResults,
+      })
+    }).catch((err) => {
       console.log(err);
       console.log('failed');
       res.redirect('/');
     });
-  
-};
+  };
