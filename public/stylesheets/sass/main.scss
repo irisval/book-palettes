@@ -1,6 +1,8 @@
 @charset "utf-8";
 @import "../bulma/bulma.sass";
 
+$gap: 100px !important;
+
 /* ---- defaults ---- */
 
 
@@ -8,3 +10,36 @@ body {
     padding: 0;
     margin: 0;
 }
+
+.book {
+    .book__info {
+        margin: 10px 0 20px;
+        .book__title, .book__authors {
+            text-align: center;
+        }
+    }
+    .book__palette {
+        display: flex;
+        justify-content: center;
+      
+        .palette-square:before {
+            content: '';
+            display: block;
+        }
+        .palette-square {
+            width: 25px;
+            height: 25px;
+            margin: px;
+        }
+    }
+    .book__palette-codes {
+        margin-top: 5px;
+        text-align: center;
+        .hex {
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+    }
+}
+
+

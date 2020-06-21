@@ -1,25 +1,49 @@
 <div class="container">
-
-  <h1> Results for {{searchTerm}}</h1>
+  <h1>Results for {{searchTerm}}</h1>
   <br>
+
   {{#each bookResults}}
-  {{#if (resultsNewRow @index) }}
-  <div class="columns is-centered">
-   {{/if}}
+    {{#if (resultsNewRow @index) }}
+      <div class="columns">
+    {{/if}}
 
-   <div class="column">
-    <figure class="image is-3by4">
-      <img src="{{this.volumeInfo.imageLinks.thumbnail}}">
-    </figure>
-    <p>{{this.volumeInfo.title}}</p>
-    {{#each this.volumeInfo.authors }}
-    <span>{{this}}</span>
-    {{/each}}
-  </div>
+    <div class="column is-one-fourth-widescreen">
+      <div class="book">
+        <figure class="image is-3by4">
+          <img class="book-cover" src="{{this.volumeInfo.imageLinks.thumbnail}}">
+        </figure>
 
+        <div class="book__info">
+           <p class="book__title">{{this.volumeInfo.title}}</p>
+            <div class="book__authors">
+            {{#each this.volumeInfo.authors }}
+              <span>{{this}}</span>
+            {{/each}}
+            </div>
+        </div>
+       
+        <div class="book__palette">
+          {{#each this.colors }}
+          <div class="palette-square" style="background: {{this.hex}};"></div>
+          {{/each}}
+        </div>
 
-  {{#if (resultsEndRow @index bookResults.length) }}
-</div>
-{{/if}}
-{{/each}}
+        <div class="book__palette-codes">
+          {{#each this.colors }}
+            <!-- <span class="rgb">{{this.rgb}}</span> -->
+            <span class="hex" style="color: {{this.hex}};">{{this.hex}}</span>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+
+    {{#if (resultsEndRow @index ../bookResults.length) }}
+      {{#loop (colFillRow @index)}}
+        <div class="column is-one-fourth-widescreen is-centered">
+        </div>
+      {{/loop}}
+      </div>
+    {{/if}}
+
+  {{/each}}
 </div>

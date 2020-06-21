@@ -14,6 +14,7 @@
     "express-handlebars": "^3.1.0",
     "express-urlrewrite": "^1.2.0",
     "morgan": "~1.9.1",
+    "node-vibrant": "^3.1.5",
     "nodemon": "^2.0.2"
   }
 }

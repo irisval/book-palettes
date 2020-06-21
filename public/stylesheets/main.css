@@ -8439,4 +8439,32 @@ body {
   margin: 0;
 }
 
+.book .book__info {
+  margin: 10px 0 20px;
+}
+.book .book__info .book__title, .book .book__info .book__authors {
+  text-align: center;
+}
+.book .book__palette {
+  display: flex;
+  justify-content: center;
+}
+.book .book__palette .palette-square:before {
+  content: "";
+  display: block;
+}
+.book .book__palette .palette-square {
+  width: 25px;
+  height: 25px;
+  margin: px;
+}
+.book .book__palette-codes {
+  margin-top: 5px;
+  text-align: center;
+}
+.book .book__palette-codes .hex {
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
 /*# sourceMappingURL=main.css.map */
