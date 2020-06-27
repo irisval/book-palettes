@@ -8439,11 +8439,18 @@ body {
   margin: 0;
 }
 
+.book .book__cover {
+  margin: 0 auto;
+  max-width: 60%;
+}
 .book .book__info {
-  margin: 10px 0 20px;
+  margin: 10px 0px;
 }
 .book .book__info .book__title, .book .book__info .book__authors {
   text-align: center;
+}
+.book .book__info .book__authors {
+  font-size: 0.75rem;
 }
 .book .book__palette {
   display: flex;

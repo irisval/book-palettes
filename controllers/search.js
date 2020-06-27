@@ -1,5 +1,7 @@
 const axios = require('axios');
 const Vibrant = require('node-vibrant')
+const Book = require('../models/book');
+const Color = require('../models/color');
 
 exports.getIndex = (req, res, next) => {
   res.render('index');
@@ -7,21 +9,20 @@ exports.getIndex = (req, res, next) => {
 
 
 const addColors = async (bookResults) => {
-  const proms = bookResults.map((book) => {
-    let colors = [];
-    let m = Vibrant.from(book.volumeInfo.imageLinks.thumbnail).getSwatches().then((swatch) => {
-      colors.push({"rgb": swatch.Vibrant.getRgb(), "hex": swatch.Vibrant.getHex()});
-      colors.push({"rgb": swatch.Muted.getRgb(), "hex": swatch.Muted.getHex()});
-      colors.push({"rgb": swatch.DarkVibrant.getRgb(), "hex": swatch.DarkVibrant.getHex()});
-      colors.push({"rgb": swatch.DarkMuted.getRgb(), "hex": swatch.DarkMuted.getHex()});
-      colors.push({"rgb": swatch.LightVibrant.getRgb(), "hex": swatch.LightVibrant.getHex()});
-      colors.push({"rgb": swatch.LightMuted.getRgb(), "hex": swatch.LightMuted.getHex()});
-      book.colors = colors;
-      return book;
-    }).catch((err) => console.log(err)); 
-    return m;
+  const proms = bookResults.filter((book) => book.volumeInfo.imageLinks?.thumbnail != undefined).map((book) => {
+      let colors = [];
+      let m = Vibrant.from(book.volumeInfo.imageLinks?.thumbnail).getSwatches().then((swatch) => {
+        colors.push({"rgb": swatch.Vibrant.getRgb(), "hex": swatch.Vibrant.getHex()});
+        colors.push({"rgb": swatch.Muted.getRgb(), "hex": swatch.Muted.getHex()});
+        colors.push({"rgb": swatch.DarkVibrant.getRgb(), "hex": swatch.DarkVibrant.getHex()});
+        colors.push({"rgb": swatch.DarkMuted.getRgb(), "hex": swatch.DarkMuted.getHex()});
+        colors.push({"rgb": swatch.LightVibrant.getRgb(), "hex": swatch.LightVibrant.getHex()});
+        colors.push({"rgb": swatch.LightMuted.getRgb(), "hex": swatch.LightMuted.getHex()});
+        book.colors = colors;
+        return book;
+      }).catch((err) => console.log(err));
+      return m; 
   });
-
   return await Promise.all(proms);
 }
 
@@ -34,7 +35,7 @@ exports.getSearch = (req, res, next) => {
       q: searchTerm,
       key: process.env.KEY,
       startIndex: 0,
-      maxResults: 5,
+      maxResults: 10,
     }
   }).then((response) => {
     const bookResults = addColors(response.data.items);

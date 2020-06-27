@@ -7,7 +7,7 @@ const logger = require('morgan');
 const hbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const indexRouter = require('./routes/index');
-
+const mongoose = require('mongoose');
 const app = express();
 
 
@@ -44,5 +44,16 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+mongoose
+  .connect(
+    'mongodb://' + process.env.DB_USER + ':' + process.env.DB_PASS + '@ds057224.mlab.com:57224/book-palettes', { useNewUrlParser: true 
+    , useUnifiedTopology: true })
+  .then(result => {
+    app.listen(process.env.PORT);
+  })
+  .catch(err => {
+    console.log(err);
+  });
 
 module.exports = app;

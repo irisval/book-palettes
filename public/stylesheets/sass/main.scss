@@ -12,10 +12,17 @@ body {
 }
 
 .book {
+    .book__cover {
+        margin: 0 auto;
+        max-width: 60%;
+    }
     .book__info {
-        margin: 10px 0 20px;
+        margin: 10px 0px;
         .book__title, .book__authors {
             text-align: center;
+        }
+        .book__authors {
+            font-size: 0.75rem;
         }
     }
     .book__palette {

@@ -9,10 +9,11 @@
 
     <div class="column is-one-fourth-widescreen">
       <div class="book">
-        <figure class="image is-3by4">
-          <img class="book-cover" src="{{this.volumeInfo.imageLinks.thumbnail}}">
-        </figure>
-
+        <div class="book__cover">
+          <figure class="image is-3by4">
+            <img class="book-cover" src="{{this.volumeInfo.imageLinks.thumbnail}}">
+          </figure>
+        </div>
         <div class="book__info">
            <p class="book__title">{{this.volumeInfo.title}}</p>
             <div class="book__authors">

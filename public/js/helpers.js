@@ -4,9 +4,8 @@ let helpers = {
     let acc = "";
 
     for (let i = 0; i < n; i++) {
-      acc += block.fn(i);
+      acc += block.fn(i); 
     }
-
     return acc;
   },
 
