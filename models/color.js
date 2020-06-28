@@ -5,20 +5,24 @@ const Schema = mongoose.Schema;
 const colorSchema = new Schema({
   rgb: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   hex: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   hsl: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   books: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Book'
+      ref: 'Book',
+      required: true
     }
   ]
 

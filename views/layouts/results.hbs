@@ -11,13 +11,13 @@
       <div class="book">
         <div class="book__cover">
           <figure class="image is-3by4">
-            <img class="book-cover" src="{{this.volumeInfo.imageLinks.thumbnail}}">
+            <img class="book-cover" src="{{this.thumbnail}}">
           </figure>
         </div>
         <div class="book__info">
-           <p class="book__title">{{this.volumeInfo.title}}</p>
+           <p class="book__title">{{this.title}}</p>
             <div class="book__authors">
-            {{#each this.volumeInfo.authors }}
+            {{#each this.authors }}
               <span>{{this}}</span>
             {{/each}}
             </div>
