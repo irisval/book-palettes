@@ -47,7 +47,7 @@ app.use(function(err, req, res, next) {
 
 mongoose
   .connect(
-    'mongodb://' + process.env.DB_USER + ':' + process.env.DB_PASS + '@ds057224.mlab.com:57224/book-palettes', { useNewUrlParser: true 
+    'mongodb://' + process.env.DB_USER + ':' + process.env.DB_PASS + process.env.DB_URL, { useNewUrlParser: true 
     , useUnifiedTopology: true })
   .then(result => {
     app.listen(process.env.PORT);

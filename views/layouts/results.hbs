@@ -25,14 +25,14 @@
        
         <div class="book__palette">
           {{#each this.swatches }}
-          <div class="palette-square" style="background: {{this.hex}};"></div>
+          <div class="palette-square" style="background: {{this.[1]}};"></div>
           {{/each}}
         </div>
 
         <div class="book__palette-codes">
           {{#each this.swatches }}
             <!-- <span class="rgb">{{this.rgb}}</span> -->
-            <span class="hex" style="color: {{this.hex}};">{{this.hex}}</span>
+            <span class="hex" style="color: {{this.[1]}};">{{this.[1]}}</span>
           {{/each}}
         </div>
       </div>
