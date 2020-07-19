@@ -25,8 +25,6 @@ const colorSchema = new Schema({
       required: true
     }
   ]
-
-
 });
 
 module.exports = mongoose.model('Color', colorSchema);

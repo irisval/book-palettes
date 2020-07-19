@@ -4,11 +4,11 @@ const Schema = mongoose.Schema;
 
 const bookSchema = new Schema({
   isbn10: {
-    type: Number,
+    type: String,
     unique: true
   },
   isbn13: {
-    type: Number,
+    type: String,
     unique: true
   },
   thumbnail: {
@@ -30,13 +30,13 @@ const bookSchema = new Schema({
       type: String
     }
   ],
-  // swatches: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     ref: 'Color',
-  //     required: true
-  //   }
-  // ]
+  swatches: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Color',
+      required: true
+    }
+  ]
 });
 
 module.exports = mongoose.model('Book', bookSchema);
